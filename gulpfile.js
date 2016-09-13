@@ -23,5 +23,10 @@ gulp.task('imagemin', () =>
         .pipe(gulp.dest('_site/images'))
 );
 
-gulp.task('default', ['sass', 'copy-assets', 'imagemin']);
+gulp.task('watch', function(){
+  gulp.watch(['src/*.html'], ['copy-assets']);
+  gulp.watch(['src/styles/*.scss'], ['sass']);
+});
+
+gulp.task('default', ['sass', 'copy-assets', 'imagemin', 'watch']);
 
