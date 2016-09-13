@@ -18,5 +18,11 @@
   "bugs": {
     "url": "https://github.com/isjia/flex-sample/issues"
   },
-  "homepage": "https://github.com/isjia/flex-sample#readme"
+  "homepage": "https://github.com/isjia/flex-sample#readme",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^3.1.1",
+    "gulp-imagemin": "^3.0.3",
+    "gulp-sass": "^2.3.2"
+  }
 }
