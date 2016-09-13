@@ -1,0 +1,9 @@
+@import "palette";
+
+body {
+  display: flex;
+}
+
+h1 {
+  color: $primary-text-color;
+}
