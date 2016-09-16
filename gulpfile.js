@@ -35,7 +35,7 @@ gulp.task('imagemin', () =>
         .pipe(gulp.dest('_site/images'))
 );
 
-gulp.task('serve', ['sass', 'build', 'copy-assets', 'imagemin'], function(){
+gulp.task('serve', ['sass', 'build', 'copy-assets'], function(){
   browserSync.init({
     server: {
       baseDir: './_site'
