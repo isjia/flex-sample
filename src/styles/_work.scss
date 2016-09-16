@@ -26,3 +26,30 @@
     }
   }
 }
+
+@media (min-width: 1000px){
+  .course {
+    display: flex;
+    flex-wrap: wrap;
+    .card {
+      margin: 20px;
+      width: calc(50% - 40px);
+    }
+  }
+}
+
+@media (min-width: 1200px){
+  .course {
+    .card {
+      width: calc(33.33% - 40px);
+    }
+  }
+}
+
+@media (min-width: 1600px){
+  .course {
+    .card {
+      width: calc(25% - 40px);
+    }
+  }
+}
