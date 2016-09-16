@@ -87,7 +87,9 @@ a {
 .sidebar {
   display: none;
   background-color: #FF5722;
-  width: 300px; }
+  width: 300px;
+  -ms-flex-negative: 0;
+      flex-shrink: 0; }
   .sidebar a {
     padding: 20px;
     font-size: 18px;
@@ -126,3 +128,47 @@ a {
         -ms-flex-direction: column;
             flex-direction: column;
     border-bottom: 4px solid #607D8B; } }
+
+.course {
+  margin: 0 auto;
+  padding: 16px; }
+  .course .card {
+    -webkit-transition: all 450ms ease;
+    transition: all 450ms ease;
+    background-color: #fff;
+    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.12), 0 1px 4px rgba(0, 0, 0, 0.24);
+    padding: 10px;
+    margin: 20px 0;
+    text-align: center;
+    width: 100%; }
+    .course .card img {
+      max-width: 100%;
+      margin: 0 auto;
+      border: 1px solid #eee; }
+    .course .card .text {
+      margin-top: 15px;
+      margin-bottom: 15px;
+      word-wrap: break-word;
+      text-align: left; }
+    .course .card:hover {
+      cursor: pointer;
+      box-shadow: 0 1px 12px rgba(0, 0, 0, 0.12), 0 1px 8px rgba(0, 0, 0, 0.24); }
+
+@media (min-width: 1000px) {
+  .course {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap; }
+    .course .card {
+      margin: 20px;
+      width: calc(50% - 40px); } }
+
+@media (min-width: 1200px) {
+  .course .card {
+    width: calc(33.33% - 40px); } }
+
+@media (min-width: 1600px) {
+  .course .card {
+    width: calc(25% - 40px); } }
