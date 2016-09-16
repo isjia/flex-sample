@@ -2,6 +2,7 @@ var gulp = require('gulp');
 var sass = require('gulp-sass');
 var autoprefixer = require('gulp-autoprefixer');
 var imagemin = require('gulp-imagemin');
+var wrap = require('gulp-wrap');
 
 function handleError(err){
   console.log(err.toString());
@@ -20,6 +21,11 @@ gulp.task('copy-assets', function(){
       .pipe(gulp.dest('_site/'));
 });
 
+gulp.task('build', function(){
+  gulp.src("src/pages/*.html")
+      .pipe(wrap({src:"src/layout/default.html"}))
+      .pipe(gulp.dest('_site'));
+});
 
 gulp.task('imagemin', () =>
     gulp.src('src/images/*')
@@ -30,7 +36,8 @@ gulp.task('imagemin', () =>
 gulp.task('watch', function(){
   gulp.watch(['src/*.html'], ['copy-assets']);
   gulp.watch(['src/styles/*.scss'], ['sass']);
+  gulp.watch(['src/pages/*.html', 'src/layout/*.html'], ['build']);
 });
 
-gulp.task('default', ['sass', 'copy-assets', 'imagemin', 'watch']);
+gulp.task('default', ['sass', 'copy-assets', 'build', 'imagemin', 'watch']);
 
