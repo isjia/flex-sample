@@ -3,10 +3,14 @@ var sass = require('gulp-sass');
 var autoprefixer = require('gulp-autoprefixer');
 var imagemin = require('gulp-imagemin');
 
+function handleError(err){
+  console.log(err.toString());
+  this.emit('end');
+}
 
 gulp.task('sass', function(){
   gulp.src('src/styles/*.scss')
-      .pipe(sass())
+      .pipe(sass()).on('error', handleError)
       .pipe(autoprefixer())
       .pipe(gulp.dest('_site/styles'));
 });
