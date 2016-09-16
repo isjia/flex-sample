@@ -3,6 +3,7 @@ var sass = require('gulp-sass');
 var autoprefixer = require('gulp-autoprefixer');
 var imagemin = require('gulp-imagemin');
 var wrap = require('gulp-wrap');
+var browserSync = require('browser-sync').create();
 
 function handleError(err){
   console.log(err.toString());
@@ -10,10 +11,11 @@ function handleError(err){
 }
 
 gulp.task('sass', function(){
-  gulp.src('src/styles/*.scss')
+  return gulp.src('src/styles/*.scss')
       .pipe(sass()).on('error', handleError)
       .pipe(autoprefixer())
-      .pipe(gulp.dest('_site/styles'));
+      .pipe(gulp.dest('_site/styles'))
+      .pipe(browserSync.stream());
 });
 
 gulp.task('copy-assets', function(){
@@ -33,11 +35,23 @@ gulp.task('imagemin', () =>
         .pipe(gulp.dest('_site/images'))
 );
 
+gulp.task('serve', ['sass', 'build', 'copy-assets', 'imagemin'], function(){
+  browserSync.init({
+    server: {
+      baseDir: './_site'
+    }
+  });
+
+  gulp.watch('src/styles/*.scss', ['sass']);
+  gulp.watch('src/**/*.html', ['build']);
+  gulp.watch('_site/*.html').on('change', browserSync.reload);
+});
+
 gulp.task('watch', function(){
   gulp.watch(['src/*.html'], ['copy-assets']);
   gulp.watch(['src/styles/*.scss'], ['sass']);
   gulp.watch(['src/pages/*.html', 'src/layout/*.html'], ['build']);
 });
 
-gulp.task('default', ['sass', 'copy-assets', 'build', 'imagemin', 'watch']);
+gulp.task('default', ['serve']);
 
