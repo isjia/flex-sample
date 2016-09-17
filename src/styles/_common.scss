@@ -11,6 +11,7 @@ $divider-color:        #BDBDBD;
 body {
   margin: 0;
   color: $secondary-text-color;
+  font-family: sans-serif;
 }
 
 * {
@@ -19,4 +20,7 @@ body {
 
 a {
   text-decoration: none;
+}
+ul {
+  padding: 0;
 }
