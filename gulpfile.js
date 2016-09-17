@@ -43,6 +43,7 @@ gulp.task('serve', ['sass', 'build', 'copy-assets'], function(){
   });
 
   gulp.watch('src/styles/*.scss', ['sass']);
+  gulp.watch('src/images/*', ['imagemin']);
   gulp.watch('src/**/*.html', ['build']);
   gulp.watch('src/js/*.js', ['copy-assets']);
   gulp.watch(['_site/*.html','_site/js/*.js']).on('change', browserSync.reload);
